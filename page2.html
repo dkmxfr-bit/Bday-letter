@@ -11,36 +11,39 @@
 
 * {
   font-family: "Press Start 2P", monospace;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: url("./pusheen.png") center/cover no-repeat;
   overflow: hidden;
-}
 
-/* плавное появление */
-body {
+  background: url("./pusheen.png") center/cover no-repeat;
+
   animation: fadeIn 1s ease;
 }
 
+/* появление */
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(1.02); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* кнопка музыки */
+/* ===================== */
+/* 🎵 КНОПКА МУЗЫКИ */
+/* ===================== */
+
 .music-btn {
   width: 100px;
   height: 100px;
 
   position: absolute;
-  top: 130px;
-  left: 10px;
+  top: 90px;
+  left: 20px;
 
   border: none;
-  border-radius: 20px;
+  border-radius: 18px;
 
   background: url("./music.jpg") center/cover no-repeat;
   cursor: pointer;
@@ -57,7 +60,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.2);
 }
 
 /* иконка */
@@ -69,19 +72,20 @@ body {
 /* текст */
 .text {
   position: absolute;
-  bottom: 8px;
-  font-size: 10px;
+  bottom: 6px;
+  font-size: 9px;
   color: white;
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  z-index: 2;
 }
 
 /* сердцебиение */
 @keyframes heartbeat {
   0% { transform: scale(1); }
-  15% { transform: scale(1.1); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.15); }
-  60% { transform: scale(1); }
+  20% { transform: scale(1.1); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.12); }
+  80% { transform: scale(1); }
   100% { transform: scale(1); }
 }
 
@@ -89,31 +93,38 @@ body {
   animation: heartbeat 1.8s infinite;
 }
 
-/* кнопка назад */
+/* ===================== */
+/* 🔙 КНОПКА НАЗАД */
+/* ===================== */
+
 .back-btn {
   position: absolute;
-  bottom: 30px;
+  bottom: 180px;
   left: 50%;
 
   transform: translateX(-50%);
 
-  padding: 10px 22px;
+  padding: 12px 26px;
   font-size: 12px;
 
-  border-radius: 20px;
+  border-radius: 18px;
   border: none;
 
   background: rgba(255,255,255,0.5);
   cursor: pointer;
 
-  transition: transform 0.2s ease, background 0.2s ease;
-  will-change: transform;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
+/* без рывков */
 .back-btn:hover {
-  transform: translateX(-50%) scale(1.05);
   background: rgba(255,255,255,0.65);
 }
+
+.back-btn:active {
+  transform: translateX(-50%) scale(0.96);
+}
+
 </style>
 </head>
 
@@ -123,31 +134,32 @@ body {
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- МУЗЫКА -->
+<!-- 🎵 кнопка музыки -->
 <button class="music-btn" onclick="toggleMusic()">
 
   <div class="icon">
 
-    <svg id="playIcon" width="50" height="50" viewBox="0 0 24 24" fill="white">
+    <svg id="playIcon" width="35" height="35" viewBox="0 0 24 24" fill="white">
       <path d="M8 5v14l11-7z"/>
     </svg>
 
-    <svg id="pauseIcon" width="50" height="50" viewBox="0 0 24 24" fill="white" style="display:none;">
+    <svg id="pauseIcon" width="35" height="35" viewBox="0 0 24 24" fill="white" style="display:none;">
       <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
     </svg>
 
   </div>
 
-  <div class="text">тапни   (ฅ´ω`ฅ)</div>
+  <div class="text">tap</div>
 
 </button>
 
-<!-- НАЗАД -->
+<!-- 🔙 назад -->
 <button class="back-btn" onclick="location.href='index.html'">
 назад
 </button>
 
 <script>
+
 const music = document.getElementById("music");
 const btn = document.querySelector(".music-btn");
 const playIcon = document.getElementById("playIcon");
@@ -166,6 +178,7 @@ function toggleMusic() {
     pauseIcon.style.display = "none";
   }
 }
+
 </script>
 
 </body>
