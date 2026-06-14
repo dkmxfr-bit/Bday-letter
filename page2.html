@@ -32,12 +32,12 @@ body {
 
 /* кнопка музыки */
 .music-btn {
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  height: 85px;
 
   position: absolute;
-  top: 60px;
-  left: 20px;
+  top: 80px;
+  left: 10px;
 
   border: none;
   border-radius: 20px;
@@ -92,21 +92,24 @@ body {
 /* кнопка назад */
 .back-btn {
   position: absolute;
-
-  bottom: 15px;      /* ниже опустили (было 25px) */
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
 
-  padding: 18px 40px;  /* чуть больше кнопка */
-  font-size: 16px;     /* чуть больше текст */
+  padding: 10px 22px;   /* меньше */
+  font-size: 12px;      /* меньше */
 
-  border-radius: 25px;
+  border-radius: 20px;
   border: none;
 
   background: rgba(255,255,255,0.5);
   cursor: pointer;
 
   transition: 0.3s;
+}
+
+.back-btn:hover {
+  transform: translateX(-50%) scale(1.05);
 }
 
 .back-btn:hover {
